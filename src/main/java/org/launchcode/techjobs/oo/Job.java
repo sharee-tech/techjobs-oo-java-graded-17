@@ -57,6 +57,19 @@ public class Job {
         return aJob.getId() == getId();
     }
 
+//    Add toString() method
+
+    @Override
+    public String toString() {
+        String newLine = System.lineSeparator();
+        return newLine + "ID: " + getId() + newLine +
+                "Name: " + getName() + newLine +
+                "Employer: " + getEmployer() + newLine +
+                "Location: " + getLocation() + newLine +
+                "Position Type: " + getPositionType() + newLine +
+                "Core Competency: " + getCoreCompetency() + newLine;
+    }
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
