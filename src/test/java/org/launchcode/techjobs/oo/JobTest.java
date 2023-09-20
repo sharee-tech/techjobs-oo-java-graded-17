@@ -69,50 +69,30 @@ public class JobTest {
         String result = aJob.toString();
         String substring = "ID: " + aJob.getId() + newLine +
                 "Name: " + aJob.getName() + newLine +
-                "Employer: " + aJob.getEmployer() + newLine +
-                "Location: " + aJob.getLocation() + newLine +
-                "Position Type: " + aJob.getPositionType() + newLine +
-                "Core Competency: " + aJob.getCoreCompetency();
+                "Employer: " + aJob.getEmployer().getValue() + newLine +
+                "Location: " + aJob.getLocation().getValue() + newLine +
+                "Position Type: " + aJob.getPositionType().getValue() + newLine +
+                "Core Competency: " + aJob.getCoreCompetency().getValue();
         boolean expected = result.contains(substring);
+//        System.out.println(result);
+//        System.out.println(substring);
         assertTrue(msg, expected);
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
-//        String msg = "If a field is empty, the method should add, “Data not available” after the label.";
-//        String newLine = System.lineSeparator();
-//        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(null), new PositionType("Testing support"), new CoreCompetency("Troubleshooting"));
-//        String result = aJob.toString();
-//        String substring = "ID: " + aJob.getId() + newLine +
-//                "Name: " + aJob.getName() + newLine +
-//                "Employer: " + aJob.getEmployer() + newLine +
-//                "Location: " + aJob.getLocation() + newLine +
-//                "Position Type: " + aJob.getPositionType() + newLine +
-//                "Core Competency: " + aJob.getCoreCompetency();
-//        Field[] fields = aJob.getClass().getDeclaredFields();
-//        for (Field item: fields) {
-//            Object v = item.get(aJob);
-//            if (v == null) {
-//                System.out.println("Data not available");
-//            }
-//
-//        }
-//        boolean expected = result.
-//    }
-
-//    ClasWithStuff myStuff = new ClassWithStuff();
-//    Field[] fields = myStuff.getClass().getDeclaredFields();
-//    for(Field f : fields){
-//      Class t = f.getType();
-//      Object v = f.get(myStuff);
-//      if(t == boolean.class && Boolean.FALSE.equals(v))
-//     // found default value
-//      else if(t.isPrimitive() && ((Number) v).doubleValue() == 0)
-//     // found default value
-//      else if(!t.isPrimitive() && v == null)
-//     // found default value
-}
-
-
-
+        String msg = "If a field is empty, the method should add, “Data not available” after the label.";
+        String newLine = System.lineSeparator();
+        String nullMsg = "Data not available";
+        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(), new PositionType("Testing support"), new CoreCompetency("Troubleshooting"));
+        String result = newLine + "ID: " + (aJob.getId() != 0 ? aJob.getId() : nullMsg) + newLine +
+                "Name: " + (aJob.getName() != null ? aJob.getName() : nullMsg) + newLine +
+                "Employer: " + (aJob.getEmployer().getValue() != null ? aJob.getEmployer() : nullMsg) + newLine +
+                "Location: " + (aJob.getLocation().getValue() != null ? aJob.getLocation() : nullMsg) + newLine +
+                "Position Type: " + (aJob.getPositionType().getValue() != null ? aJob.getPositionType() : nullMsg) + newLine +
+                "Core Competency: " + (aJob.getCoreCompetency().getValue() != null ? aJob.getCoreCompetency() : nullMsg) + newLine;
+//        System.out.println(result);
+        String actual = aJob.toString();
+        assertEquals(msg, result, actual);
+    }
 }

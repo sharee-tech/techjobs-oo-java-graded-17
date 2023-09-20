@@ -13,9 +13,9 @@ public class Location {
         nextId++;
     }
 
-    public Location(String aValue) {
+    public Location(String value) {
         this();
-        value = aValue;
+        this.value = value;
     }
 
     // TODO: Add a constructor that takes a string as a parameter and assigns it to the 'value' field. The

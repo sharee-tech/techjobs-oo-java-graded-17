@@ -62,12 +62,13 @@ public class Job {
     @Override
     public String toString() {
         String newLine = System.lineSeparator();
-        return newLine + "ID: " + getId() + newLine +
-                "Name: " + getName() + newLine +
-                "Employer: " + getEmployer() + newLine +
-                "Location: " + getLocation() + newLine +
-                "Position Type: " + getPositionType() + newLine +
-                "Core Competency: " + getCoreCompetency() + newLine;
+        String nullMsg = "Data not available";
+        return newLine + "ID: " + (getId() != 0 ? getId() : nullMsg) + newLine +
+                "Name: " + (getName() != null ? getName() : nullMsg) + newLine +
+                "Employer: " + (getEmployer().getValue() != null ? getEmployer() : nullMsg) + newLine +
+                "Location: " + (getLocation().getValue() != null ? getLocation() : nullMsg) + newLine +
+                "Position Type: " + (getPositionType().getValue() != null ? getPositionType() : nullMsg) + newLine +
+                "Core Competency: " + (getCoreCompetency().getValue() != null ? getCoreCompetency() : nullMsg) + newLine;
     }
 
 
