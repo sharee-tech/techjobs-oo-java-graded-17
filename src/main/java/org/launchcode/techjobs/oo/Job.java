@@ -63,12 +63,12 @@ public class Job {
     public String toString() {
         String newLine = System.lineSeparator();
         String nullMsg = "Data not available";
-        return newLine + "ID: " + (getId() != 0 ? getId() : nullMsg) + newLine +
-                "Name: " + (getName() != null ? getName() : nullMsg) + newLine +
-                "Employer: " + (getEmployer().getValue() != null ? getEmployer() : nullMsg) + newLine +
-                "Location: " + (getLocation().getValue() != null ? getLocation() : nullMsg) + newLine +
-                "Position Type: " + (getPositionType().getValue() != null ? getPositionType() : nullMsg) + newLine +
-                "Core Competency: " + (getCoreCompetency().getValue() != null ? getCoreCompetency() : nullMsg) + newLine;
+        return newLine + "ID: " + getId() + newLine +
+                "Name: " + (getName() != "" && getName() != null ? getName() : nullMsg) + newLine +
+                "Employer: " + (getEmployer().getValue() != "" && getEmployer().getValue() != null ? getEmployer() : nullMsg) + newLine +
+                "Location: " + (getLocation().getValue() != "" && getLocation().getValue() != null ? getLocation() : nullMsg) + newLine +
+                "Position Type: " + (getPositionType().getValue() != "" && getPositionType().getValue() != null ? getPositionType() : nullMsg) + newLine +
+                "Core Competency: " + (getCoreCompetency().getValue() != "" && getCoreCompetency().getValue() != null ? getCoreCompetency() : nullMsg) + newLine;
     }
 
 

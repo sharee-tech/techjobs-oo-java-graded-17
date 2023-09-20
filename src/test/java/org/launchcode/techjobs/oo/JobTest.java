@@ -84,14 +84,14 @@ public class JobTest {
         String msg = "If a field is empty, the method should add, “Data not available” after the label.";
         String newLine = System.lineSeparator();
         String nullMsg = "Data not available";
-        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(), new PositionType("Testing support"), new CoreCompetency("Troubleshooting"));
-        String result = newLine + "ID: " + (aJob.getId() != 0 ? aJob.getId() : nullMsg) + newLine +
-                "Name: " + (aJob.getName() != null ? aJob.getName() : nullMsg) + newLine +
-                "Employer: " + (aJob.getEmployer().getValue() != null ? aJob.getEmployer() : nullMsg) + newLine +
-                "Location: " + (aJob.getLocation().getValue() != null ? aJob.getLocation() : nullMsg) + newLine +
-                "Position Type: " + (aJob.getPositionType().getValue() != null ? aJob.getPositionType() : nullMsg) + newLine +
-                "Core Competency: " + (aJob.getCoreCompetency().getValue() != null ? aJob.getCoreCompetency() : nullMsg) + newLine;
-//        System.out.println(result);
+        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(), new PositionType(""), new CoreCompetency("Troubleshooting"));
+        String result = newLine + "ID: " + aJob.getId() + newLine +
+                "Name: " + "Systems Test Engineer" + newLine +
+                "Employer: " + "Garmin" + newLine +
+                "Location: " + nullMsg + newLine +
+                "Position Type: " + nullMsg + newLine +
+                "Core Competency: " + "Troubleshooting" + newLine;
+        System.out.println(result);
         String actual = aJob.toString();
         assertEquals(msg, result, actual);
     }
