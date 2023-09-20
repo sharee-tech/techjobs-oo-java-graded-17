@@ -21,21 +21,25 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
 
-//        Job aJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//
-//        String msg1 = "Constructor should assign the class of each field correctly";
-//        assertTrue(msg1, "Product tester" instanceof String);
-//        assertTrue(msg1, "ACME" instanceof Employer);
-//        assertTrue(msg1, "Desert" instanceof Location);
-//        assertTrue(msg1, "Quality Control" instanceof PositionType);
-//        assertTrue(msg1, "Persistence" instanceof CoreCompetency);
-//
-//        String msg2 = "Constructor should assign the value of each field correctly";
-//        assertEquals(msg2, "Product tester", aJob.getName());
-//        assertEquals(msg2, "ACME", aJob.getEmployer());
-//        assertEquals(msg2, "Desert", aJob.getLocation());
-//        assertEquals(msg2, "Quality Control", aJob.getPositionType());
-//        assertEquals(msg2, "Persistence", aJob.getCoreCompetency());
+        Job aJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String name = aJob.getName();
+        Employer employer = aJob.getEmployer();
+        Location location = aJob.getLocation();
+        PositionType positionType = aJob.getPositionType();
+        CoreCompetency coreCompetency = aJob.getCoreCompetency();
+        String msg1 = "Constructor should assign the class of each field correctly";
+        assertTrue(msg1, name instanceof String);
+        assertTrue(msg1, employer instanceof Employer);
+        assertTrue(msg1, location instanceof Location);
+        assertTrue(msg1, positionType instanceof PositionType);
+        assertTrue(msg1, coreCompetency instanceof CoreCompetency);
+
+        String msg2 = "Constructor should assign the value of each field correctly";
+        assertEquals(msg2, "Product tester", name);
+        assertEquals(msg2, "ACME", employer.getValue());
+        assertEquals(msg2, "Desert", location.getValue());
+        assertEquals(msg2, "Quality control", positionType.getValue());
+        assertEquals(msg2, "Persistence", coreCompetency.getValue());
     }
 
     @Test
@@ -75,26 +79,26 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-        String msg = "If a field is empty, the method should add, “Data not available” after the label.";
-        String newLine = System.lineSeparator();
-        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(null), new PositionType("Testing support"), new CoreCompetency("Troubleshooting"));
-        String result = aJob.toString();
-        String substring = "ID: " + aJob.getId() + newLine +
-                "Name: " + aJob.getName() + newLine +
-                "Employer: " + aJob.getEmployer() + newLine +
-                "Location: " + aJob.getLocation() + newLine +
-                "Position Type: " + aJob.getPositionType() + newLine +
-                "Core Competency: " + aJob.getCoreCompetency();
-        Field[] fields = aJob.getClass().getDeclaredFields();
-        for (Field item: fields) {
-            Object v = item.get(aJob);
-            if (v == null) {
-                System.out.println("Data not available");
-            }
-
-        }
-        boolean expected = result.
-    }
+//        String msg = "If a field is empty, the method should add, “Data not available” after the label.";
+//        String newLine = System.lineSeparator();
+//        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(null), new PositionType("Testing support"), new CoreCompetency("Troubleshooting"));
+//        String result = aJob.toString();
+//        String substring = "ID: " + aJob.getId() + newLine +
+//                "Name: " + aJob.getName() + newLine +
+//                "Employer: " + aJob.getEmployer() + newLine +
+//                "Location: " + aJob.getLocation() + newLine +
+//                "Position Type: " + aJob.getPositionType() + newLine +
+//                "Core Competency: " + aJob.getCoreCompetency();
+//        Field[] fields = aJob.getClass().getDeclaredFields();
+//        for (Field item: fields) {
+//            Object v = item.get(aJob);
+//            if (v == null) {
+//                System.out.println("Data not available");
+//            }
+//
+//        }
+//        boolean expected = result.
+//    }
 
 //    ClasWithStuff myStuff = new ClassWithStuff();
 //    Field[] fields = myStuff.getClass().getDeclaredFields();
@@ -107,7 +111,7 @@ public class JobTest {
 //     // found default value
 //      else if(!t.isPrimitive() && v == null)
 //     // found default value
-//}
+}
 
 
 
