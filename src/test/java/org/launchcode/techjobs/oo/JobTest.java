@@ -1,11 +1,8 @@
 package org.launchcode.techjobs.oo;
 
 import static org.junit.Assert.*;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Before;
 
-import java.lang.reflect.Field;
 
 
 public class JobTest {
@@ -27,6 +24,7 @@ public class JobTest {
         Location location = aJob.getLocation();
         PositionType positionType = aJob.getPositionType();
         CoreCompetency coreCompetency = aJob.getCoreCompetency();
+
         String msg1 = "Constructor should assign the class of each field correctly";
         assertTrue(msg1, name instanceof String);
         assertTrue(msg1, employer instanceof Employer);
@@ -56,7 +54,6 @@ public class JobTest {
         String newLine = System.lineSeparator();
         Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location("Olathe"), new PositionType("Testing support"), new CoreCompetency("Troubleshooting"));
         String result = aJob.toString();
-       // String expected = newLine;
         assertEquals(msg, true, result.startsWith(newLine));
         assertEquals(msg, true, result.endsWith(newLine));
     }
@@ -74,8 +71,6 @@ public class JobTest {
                 "Position Type: " + aJob.getPositionType().getValue() + newLine +
                 "Core Competency: " + aJob.getCoreCompetency().getValue();
         boolean expected = result.contains(substring);
-//        System.out.println(result);
-//        System.out.println(substring);
         assertTrue(msg, expected);
     }
 
@@ -84,14 +79,13 @@ public class JobTest {
         String msg = "If a field is empty, the method should add, “Data not available” after the label.";
         String newLine = System.lineSeparator();
         String nullMsg = "Data not available";
-        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(), new PositionType(""), new CoreCompetency("Troubleshooting"));
+        Job aJob = new Job("Systems Test Engineer", new Employer("Garmin"), new Location(null), new PositionType(""), new CoreCompetency("Troubleshooting"));
         String result = newLine + "ID: " + aJob.getId() + newLine +
                 "Name: " + "Systems Test Engineer" + newLine +
                 "Employer: " + "Garmin" + newLine +
                 "Location: " + nullMsg + newLine +
                 "Position Type: " + nullMsg + newLine +
                 "Core Competency: " + "Troubleshooting" + newLine;
-        System.out.println(result);
         String actual = aJob.toString();
         assertEquals(msg, result, actual);
     }
